@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links — Premium Link in Bio</title>
+    <meta name="description" content="Find all my links in one place — Telegram, YouTube, Facebook, WhatsApp & more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== CSS Reset & Variables ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a1a;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f0f0f5;
+            --text-secondary: rgba(240, 240, 245, 0.6);
+            --accent-1: #a855f7;
+            --accent-2: #6366f1;
+            --accent-3: #ec4899;
+            --accent-4: #06b6d4;
+            --glow-purple: rgba(168, 85, 247, 0.35);
+            --glow-pink: rgba(236, 72, 153, 0.35);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 16px 60px;
+        }
+
+        /* ===== Animated Gradient Background ===== */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(135deg,
+                    #0a0a1a 0%,
+                    #1a0a2e 20%,
+                    #0a0a1a 40%,
+                    #0e1a2e 60%,
+                    #1a0a2e 80%,
+                    #0a0a1a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ===== Particle / Geometric Shapes Background ===== */
+        .particles-container {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+        }
+
+        .particle.circle {
+            border: 1.5px solid rgba(168, 85, 247, 0.25);
+            background: transparent;
+        }
+
+        .particle.dot {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        .particle.ring {
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            background: transparent;
+        }
+
+        .geo-shape {
+            position: absolute;
+            opacity: 0;
+            animation: geoFloat linear infinite;
+        }
+
+        .geo-shape.triangle {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 18px solid rgba(6, 182, 212, 0.15);
+        }
+
+        .geo-shape.diamond {
+            width: 14px;
+            height: 14px;
+            background: rgba(168, 85, 247, 0.12);
+            transform: rotate(45deg);
+        }
+
+        .geo-shape.hex {
+            width: 20px;
+            height: 12px;
+            background: rgba(236, 72, 153, 0.1);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes geoFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* ===== Main Card Container ===== */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 440px;
+            animation: floatCard 5s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 48px 32px 36px;
+            text-align: center;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Profile Image ===== */
+        .profile-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease 0.2s forwards;
+        }
+
+        .profile-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-3), var(--accent-4), var(--accent-2));
+            background-size: 300% 300%;
+            animation: borderGlow 4s ease infinite;
+            box-shadow:
+                0 0 20px var(--glow-purple),
+                0 0 40px rgba(168, 85, 247, 0.15);
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .profile-img {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-dark);
+            z-index: 2;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: var(--accent-1);
+        }
+
+        /* ===== Name ===== */
+        .profile-name {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7, #ec4899, #6366f1, #06b6d4);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.7s ease 0.35s forwards, gradientText 6s ease infinite;
+            opacity: 0;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        @keyframes gradientText {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ===== Typing Bio ===== */
+        .bio-container {
+            height: 28px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease 0.5s forwards;
+        }
+
+        .bio-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .cursor-blink {
+            display: inline-block;
+            width: 2px;
+            height: 18px;
+            background: var(--accent-1);
+            margin-left: 3px;
+            vertical-align: middle;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ===== Social Proof ===== */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin: 20px 0 28px;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease 0.6s forwards;
+        }
+
+        .proof-item {
+            text-align: center;
+        }
+
+        .proof-count {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .proof-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* ===== Divider ===== */
+        .divider {
+            width: 60px;
+            height: 2px;
+            margin: 0 auto 28px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-3), transparent);
+            border-radius: 2px;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease 0.65s forwards;
+        }
+
+        /* ===== Link Buttons ===== */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .link-btn:nth-child(1) {
+            animation: staggerIn 0.6s ease 0.7s forwards;
+        }
+
+        .link-btn:nth-child(2) {
+            animation: staggerIn 0.6s ease 0.85s forwards;
+        }
+
+        .link-btn:nth-child(3) {
+            animation: staggerIn 0.6s ease 1.0s forwards;
+        }
+
+        .link-btn:nth-child(4) {
+            animation: staggerIn 0.6s ease 1.15s forwards;
+        }
+
+        .link-btn:nth-child(5) {
+            animation: staggerIn 0.6s ease 1.3s forwards;
+        }
+
+        .link-btn:nth-child(6) {
+            animation: staggerIn 0.6s ease 1.45s forwards;
+        }
+
+        @keyframes staggerIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .link-btn.telegram::before {
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.15), rgba(0, 136, 204, 0.05));
+        }
+
+        .link-btn.youtube::before {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));
+        }
+
+        .link-btn.facebook::before {
+            background: linear-gradient(135deg, rgba(24, 119, 242, 0.15), rgba(24, 119, 242, 0.05));
+        }
+
+        .link-btn.whatsapp::before {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(37, 211, 102, 0.05));
+        }
+
+        .link-btn.email::before {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.05));
+        }
+
+        .link-btn.instagram::before {
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.15), rgba(253, 29, 29, 0.1), rgba(252, 176, 69, 0.05));
+        }
+
+        .link-btn:hover::before {
+            opacity: 1;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-btn.telegram:hover {
+            box-shadow: 0 8px 30px rgba(0, 136, 204, 0.2), 0 0 15px rgba(0, 136, 204, 0.1);
+        }
+
+        .link-btn.youtube:hover {
+            box-shadow: 0 8px 30px rgba(255, 0, 0, 0.2), 0 0 15px rgba(255, 0, 0, 0.1);
+        }
+
+        .link-btn.facebook:hover {
+            box-shadow: 0 8px 30px rgba(24, 119, 242, 0.2), 0 0 15px rgba(24, 119, 242, 0.1);
+        }
+
+        .link-btn.whatsapp:hover {
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.2), 0 0 15px rgba(37, 211, 102, 0.1);
+        }
+
+        .link-btn.email:hover {
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.2), 0 0 15px rgba(168, 85, 247, 0.1);
+        }
+
+        .link-btn.instagram:hover {
+            box-shadow: 0 8px 30px rgba(225, 48, 108, 0.25), 0 0 15px rgba(253, 29, 29, 0.15);
+        }
+
+        /* Glow dot accent */
+        .link-btn::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-btn.telegram::after {
+            background: #0088cc;
+            box-shadow: 0 0 8px #0088cc;
+        }
+
+        .link-btn.youtube::after {
+            background: #ff0000;
+            box-shadow: 0 0 8px #ff0000;
+        }
+
+        .link-btn.facebook::after {
+            background: #1877f2;
+            box-shadow: 0 0 8px #1877f2;
+        }
+
+        .link-btn.whatsapp::after {
+            background: #25d366;
+            box-shadow: 0 0 8px #25d366;
+        }
+
+        .link-btn.email::after {
+            background: #a855f7;
+            box-shadow: 0 0 8px #a855f7;
+        }
+
+        .link-btn.instagram::after {
+            background: #e1306c;
+            box-shadow: 0 0 8px #e1306c;
+        }
+
+        .link-btn:hover::after {
+            opacity: 1;
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .link-btn:hover .link-icon {
+            transform: scale(1.1);
+        }
+
+        .telegram .link-icon {
+            background: rgba(0, 136, 204, 0.15);
+            color: #0088cc;
+        }
+
+        .youtube .link-icon {
+            background: rgba(255, 0, 0, 0.15);
+            color: #ff0000;
+        }
+
+        .facebook .link-icon {
+            background: rgba(24, 119, 242, 0.15);
+            color: #1877f2;
+        }
+
+        .whatsapp .link-icon {
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+        }
+
+        .email .link-icon {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+        }
+
+        .instagram .link-icon {
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(252, 176, 69, 0.1));
+            color: #e1306c;
+        }
+
+        .link-label {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            transform: scale(0);
+            animation: rippleAnim 0.6s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            opacity: 0;
+            animation: fadeInUp 0.7s ease 1.5s forwards;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .footer .heart {
+            color: var(--accent-3);
+            display: inline-block;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.2);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* ===== Parallax on scroll ===== */
+        .parallax-layer {
+            transition: transform 0.3s ease-out;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 480px) {
+            body {
+                padding: 24px 12px 48px;
+            }
+
+            .glass-card {
+                padding: 36px 20px 28px;
+                border-radius: 22px;
+            }
+
+            .profile-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                font-size: 36px;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .link-btn {
+                padding: 14px 18px;
+                font-size: 14px;
+                gap: 12px;
+            }
+
+            .link-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+
+            .social-proof {
+                gap: 20px;
+            }
+
+            .proof-count {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .glass-card {
+                padding: 28px 14px 24px;
+            }
+
+            .profile-name {
+                font-size: 20px;
+            }
+
+            .bio-text {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated Gradient Background -->
+    <div class="bg-gradient"></div>
+
+    <!-- Particles & Geometric Shapes -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Main Card -->
+    <div class="main-wrapper parallax-layer">
+        <div class="glass-card">
+
+            <!-- Profile Image -->
+            <div class="profile-container">
+                <div class="profile-border"></div>
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+
+            <!-- Name -->
+            <h1 class="profile-name">NITIN BHAI</h1>
+
+            <!-- Typing Bio -->
+            <div class="bio-container">
+                <span class="bio-text" id="bioText"></span>
+                <span class="cursor-blink"></span>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="social-proof">
+                <div class="proof-item">
+                    <div class="proof-count" data-target="10000">0</div>
+                    <div class="proof-label">Followers</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-count" data-target="500">0</div>
+                    <div class="proof-label">Posts</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-count" data-target="50">0</div>
+                    <div class="proof-label">Projects</div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Link Buttons -->
+            <div class="links-list">
+                <a href="#" class="link-btn telegram" id="https://t.me/filesetu">
+                    <span class="link-icon"><i class="fab fa-telegram-plane"></i></span>
+                    <span class="link-label">Telegram</span>
+                </a>
+                <a href="#" class="link-btn youtube" id="btnYouTube">
+                    <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                    <span class="link-label">YouTube</span>
+                </a>
+                <a href="#" class="link-btn facebook" id="btnFacebook">
+                    <span class="link-icon"><i class="fab fa-facebook-f"></i></span>
+                    <span class="link-label">Facebook</span>
+                </a>
+                <a href="#" class="link-btn whatsapp" id="btnWhatsApp">
+                    <span class="link-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="link-label">WhatsApp</span>
+                </a>
+                <a href="#" class="link-btn email" id="btnEmail">
+                    <span class="link-icon"><i class="fas fa-envelope"></i></span>
+                    <span class="link-label">Email</span>
+                </a>
+                <a href="#" class="link-btn instagram" id="btnInstagram">
+                    <span class="link-icon"><i class="fab fa-instagram"></i></span>
+                    <span class="link-label">Instagram</span>
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>&copy; 2026 Your Name &bull; Made with <span class="heart">&hearts;</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ===== Typing Animation ===== */
+        const phrases = ['Developer', 'Creator', 'Mentor', 'Designer', 'Dreamer'];
+        const bioEl = document.getElementById('bioText');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeSpeed = 90;
+        const deleteSpeed = 50;
+        const pauseEnd = 1800;
+        const pauseStart = 400;
+
+        function typeWriter() {
+            const current = phrases[phraseIndex];
+            if (!isDeleting) {
+                bioEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === current.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, pauseEnd);
+                    return;
+                }
+                setTimeout(typeWriter, typeSpeed);
+            } else {
+                bioEl.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeWriter, pauseStart);
+                    return;
+                }
+                setTimeout(typeWriter, deleteSpeed);
+            }
+        }
+        setTimeout(typeWriter, 1200);
+
+        /* ===== Ripple Effect ===== */
+        document.querySelectorAll('.link-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                this.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+
+        /* ===== Counter Animation ===== */
+        function animateCounters() {
+            document.querySelectorAll('.proof-count').forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+
+                    if (target >= 10000) {
+                        counter.textContent = (current / 1000).toFixed(current >= target ? 0 : 1) + 'k+';
+                    } else if (target >= 1000) {
+                        counter.textContent = current.toLocaleString() + '+';
+                    } else {
+                        counter.textContent = current + '+';
+                    }
+
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            });
+        }
+        setTimeout(animateCounters, 1400);
+
+        /* ===== Particle Generator ===== */
+        const container = document.getElementById('particlesContainer');
+        const particleTypes = ['circle', 'dot', 'ring'];
+        const shapeTypes = ['triangle', 'diamond', 'hex'];
+
+        function createParticle() {
+            const el = document.createElement('div');
+            const isGeo = Math.random() > 0.6;
+
+            if (isGeo) {
+                const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+                el.classList.add('geo-shape', type);
+                el.style.animationDuration = (15 + Math.random() * 20) + 's';
+            } else {
+                const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
+                el.classList.add('particle', type);
+                const size = 4 + Math.random() * 14;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+                el.style.animationDuration = (12 + Math.random() * 18) + 's';
+            }
+
+            el.style.left = Math.random() * 100 + '%';
+            el.style.animationDelay = Math.random() * 8 + 's';
+            container.appendChild(el);
+
+            const dur = parseFloat(el.style.animationDuration) * 1000 +
+                parseFloat(el.style.animationDelay) * 1000;
+            setTimeout(() => el.remove(), dur + 500);
+        }
+
+        // Initial burst
+        for (let i = 0; i < 20; i++) createParticle();
+        // Continuous spawn
+        setInterval(() => {
+            if (container.childElementCount < 35) createParticle();
+        }, 800);
+
+        /* ===== Parallax on Scroll ===== */
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const layer = document.querySelector('.parallax-layer');
+            if (layer) {
+                layer.style.transform = `translateY(${scrollY * 0.04}px)`;
+            }
+        });
+    </script>
+</body>
+
+</html>
