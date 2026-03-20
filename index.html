@@ -439,6 +439,10 @@
             animation: staggerIn 0.6s ease 1.45s forwards;
         }
 
+        .link-btn:nth-child(7) {
+            animation: staggerIn 0.6s ease 1.6s forwards;
+        }
+
         @keyframes staggerIn {
             from {
                 opacity: 0;
@@ -484,6 +488,10 @@
             background: linear-gradient(135deg, rgba(225, 48, 108, 0.15), rgba(253, 29, 29, 0.1), rgba(252, 176, 69, 0.05));
         }
 
+        .link-btn.anime-poster::before {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 201, 72, 0.1));
+        }
+
         .link-btn:hover::before {
             opacity: 1;
         }
@@ -516,6 +524,10 @@
 
         .link-btn.instagram:hover {
             box-shadow: 0 8px 30px rgba(225, 48, 108, 0.25), 0 0 15px rgba(253, 29, 29, 0.15);
+        }
+
+        .link-btn.anime-poster:hover {
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3), 0 0 20px rgba(247, 201, 72, 0.2);
         }
 
         /* Glow dot accent */
@@ -560,6 +572,11 @@
         .link-btn.instagram::after {
             background: #e1306c;
             box-shadow: 0 0 8px #e1306c;
+        }
+
+        .link-btn.anime-poster::after {
+            background: #ff6b35;
+            box-shadow: 0 0 10px #ff6b35, 0 0 20px rgba(247, 201, 72, 0.4);
         }
 
         .link-btn:hover::after {
@@ -612,6 +629,11 @@
         .instagram .link-icon {
             background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(252, 176, 69, 0.1));
             color: #e1306c;
+        }
+
+        .anime-poster .link-icon {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 201, 72, 0.15));
+            color: #ff6b35;
         }
 
         .link-label {
@@ -763,7 +785,9 @@
             <div class="profile-container">
                 <div class="profile-border"></div>
                 <div class="profile-img">
-                    <i class="fas fa-user"></i>
+                    <img src="data:image/png;base64,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"
+                        alt="Nitin"
+                        style="width:114px;height:114px;border-radius:50%;object-fit:cover;object-position:center top;display:block;">
                 </div>
             </div>
 
@@ -798,41 +822,98 @@
             <!-- Link Buttons -->
             <div class="links-list">
                 <a href="https://t.me/filesetu" class="link-btn telegram" id="btnTelegram">
-                    <span class="link-icon"><i class="fab fa-telegram-plane"></i></span>
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.467l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.092z"
+                                fill="#0088cc" />
+                        </svg></span>
                     <span class="link-label">Telegram</span>
                 </a>
-                <a href="https://youtube.com/@nitin3danimation?si=oEHc57dGuMO62xKc" class="link-btn youtube" id="btnYouTube">
-                    <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                <a href="https://www.youtube.com/@nitin3danimation?sub_confirmation=1" class="link-btn youtube"
+                    id="btnYouTube">
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                                fill="#FF0000" />
+                        </svg></span>
                     <span class="link-label">YouTube</span>
                 </a>
-                <a href="file:///C:/Users/nitin/Downloads/poster_maker_v2.html" class="link-btn facebook" id="btnFacebook">
-                    <span class="link-icon"><i class="fab fa-facebook-f"></i></span>
+                <a href="#" class="link-btn facebook" id="btnFacebook">
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                                fill="#1877F2" />
+                        </svg></span>
                     <span class="link-label">Facebook</span>
                 </a>
                 <a href="#" class="link-btn whatsapp" id="btnWhatsApp">
-                    <span class="link-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+                                fill="#25D366" />
+                        </svg></span>
                     <span class="link-label">WhatsApp</span>
                 </a>
-                <a href="#" class="link-btn email" id="btnEmail">
-                    <span class="link-icon"><i class="fas fa-envelope"></i></span>
+                <a href="bhaitg694@gmail.com" class="link-btn email" id="btnEmail">
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"
+                                fill="#EA4335" />
+                            <path
+                                d="M0 5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548V16.64L5.455 11.73V5.457H0V5.457z"
+                                fill="#34A853" />
+                            <path d="M18.545 4.64 12 9.548V16.64l6.545-4.91V4.64z" fill="#FBBC05" />
+                        </svg></span>
                     <span class="link-label">Email</span>
                 </a>
                 <a href="https://aimbotaxee.serv00.net/instagram" class="link-btn instagram" id="btnInstagram">
-                    <span class="link-icon"><i class="fab fa-instagram"></i></span>
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="ig1" cx="30%" cy="107%" r="150%">
+                                    <stop offset="0%" stop-color="#fdf497" />
+                                    <stop offset="5%" stop-color="#fdf497" />
+                                    <stop offset="45%" stop-color="#fd5949" />
+                                    <stop offset="60%" stop-color="#d6249f" />
+                                    <stop offset="90%" stop-color="#285AEB" />
+                                </radialGradient>
+                            </defs>
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"
+                                fill="url(#ig1)" />
+                        </svg></span>
                     <span class="link-label">Instagram</span>
+                </a>
+                <a href="https://mars750.github.io/ANIME-POSTER-MAKER-PRO/" class="link-btn anime-poster"
+                    id="btnAnimePoster">
+                    <span class="link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2L13.5 8.5L20 7L15.5 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L8.5 12L4 7L10.5 8.5L12 2Z"
+                                fill="#ff6b35" />
+                            <path
+                                d="M12 6L13 9.5L16.5 8.5L14 11L16.5 13.5L13 12.5L12 16L11 12.5L7.5 13.5L10 11L7.5 8.5L11 9.5L12 6Z"
+                                fill="#f7c948" opacity="0.8" />
+                        </svg></span>
+                    <span class="link-label">✦ ANIME POSTER MAKER PRO</span>
                 </a>
             </div>
 
             <!-- Footer -->
             <div class="footer">
-                <p>&copy; 2026 Your Name &bull; Made with <span class="heart">&hearts;</span></p>
+                <p>&copy; 2026 NITIN &bull; Made with <span class="heart">&hearts;</span></p>
             </div>
         </div>
     </div>
 
     <script>
         /* ===== Typing Animation ===== */
-        const phrases = ['Developer', 'Creator', 'Mentor', 'Designer', 'Dreamer'];
+        const phrases = ['Animater', 'Creator', 'Mentor', 'Designer', Developer'];
         const bioEl = document.getElementById('bioText');
         let phraseIndex = 0;
         let charIndex = 0;
@@ -960,6 +1041,3 @@
 </body>
 
 </html>
-
-
-
